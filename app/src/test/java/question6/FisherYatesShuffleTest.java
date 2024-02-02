@@ -12,8 +12,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import question4.QuizGame;
-
 public class FisherYatesShuffleTest {
 
     private final InputStream systemIn = System.in;
@@ -47,14 +45,14 @@ public class FisherYatesShuffleTest {
         Set<String> firstQuestions = new HashSet<>();
         for (int i = 0; i < 5; i++) {
             provideInput("1\n1\n1\n1\n1\n1\n"); // ユーザー入力の模擬
-            QuizGame.main(new String[0]);
+            FisherYatesShuffle.main(new String[0]);
             String output = getOutput();
 
             // 最初の質問を取得して、セットに追加
             String firstQuestion = output.split("\n")[0];
             firstQuestions.add(firstQuestion);
         }
-
+        Assertions.assertThat(getOutput().trim()).isNotEmpty();
         // シャッフルが適切に行われていれば、最初の質問は少なくとも一度は異なるはず
         Assertions.assertThat(firstQuestions.size()).isGreaterThanOrEqualTo(1);
     }

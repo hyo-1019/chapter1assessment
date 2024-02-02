@@ -10,8 +10,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import question4.QuizGame;
-
 public class MultipleChoiceTest {
 
     private final InputStream systemIn = System.in;
@@ -44,7 +42,7 @@ public class MultipleChoiceTest {
         // テストケースの入力を模擬
         String input = "3\n1\n2\n1\n4\n3\n";
         provideInput(input);
-        QuizGame.main(new String[0]);
+        MultipleChoice.main(new String[0]);
         String output = getOutput();
 
         // 出力内容の検証
