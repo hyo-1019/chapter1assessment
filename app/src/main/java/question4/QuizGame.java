@@ -31,6 +31,10 @@ public class QuizGame {
 
         int score = 0;
 
+        // 不正解だった質問と答えを入れる配列の準備
+        String[][] wrongQuestions = new String[questions.length][2];
+        int wrongCount = 0;
+
         for (int i = 0; i < questions.length; i++) {
             System.out.println("Question " + (i + 1) + ": " + questions[i]);
             System.out.print("Please enter your answer: ");
@@ -41,9 +45,20 @@ public class QuizGame {
                 score++;
             } else {
                 System.out.println("Incorrect."); // 不正解
+                // 不正解だった質問と答えを配列に入れる
+                wrongQuestions[wrongCount][0] = questions[i];
+                wrongQuestions[wrongCount][1] = answers[i];
+                wrongCount++;
             }
         }
 
         System.out.println("Your score is: " + score);
+
+        // 不正解の質問と答えの出力
+        System.out.println("Review the incorrect answer: ");
+        for (int i = 0; i < wrongCount; i++) {
+            System.out.println("Question: " + wrongQuestions[i][0]);
+            System.out.println("Correct answer: " + wrongQuestions[i][1]);
+        }
     }
 }
